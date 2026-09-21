@@ -68,31 +68,31 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
   const virtualKeysRow3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
       <div 
-        className="w-full max-w-3xl bg-[#0e0f14] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+        className="w-full max-w-3xl bg-white border border-zinc-300 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#090a0d]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200 bg-[#fafaf9]">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400">
-              <Activity className="w-5 h-5" />
+            <div className="p-1.5 border border-zinc-300 bg-white text-zinc-800">
+              <Activity className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-semibold text-white tracking-wide">
-                Acoustic Frequency Lab & Sound Test
+              <div className="text-[10px] font-mono text-zinc-700 uppercase tracking-widest">
+                LAB-04 // ACOUSTIC BENCHMARK
+              </div>
+              <h2 className="text-base font-medium text-zinc-900 tracking-tight">
+                Acoustic Frequency & Timbre Test
               </h2>
-              <p className="text-xs text-zinc-400">
-                Type on your physical keyboard or click below to audition mechanical timbre.
-              </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-1.5 text-zinc-500 hover:text-black border border-transparent hover:border-zinc-300 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -106,9 +106,9 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
             
             {/* Switch Selector */}
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                <Sliders className="w-3.5 h-3.5 text-amber-400" />
-                Switch Profile
+              <label className="text-xs font-mono uppercase tracking-wider text-zinc-700 flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5 text-zinc-500" />
+                Switch Actuator Profile
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {SWITCH_OPTIONS.map((sw) => {
@@ -120,14 +120,14 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
                         setSelectedSwitch(sw.id as SwitchType);
                         soundEngine.playKeyStroke(sw.id as SwitchType, selectedPlate);
                       }}
-                      className={`p-2.5 rounded-lg border text-left transition-all flex flex-col justify-between ${
+                      className={`p-2.5 border text-left transition-colors cursor-pointer ${
                         isSel
-                          ? 'bg-amber-500/15 border-amber-500/50 text-white'
-                          : 'bg-zinc-900/60 hover:bg-zinc-900 border-white/5 text-zinc-400'
+                          ? 'bg-white border-zinc-900 ring-1 ring-zinc-900 text-zinc-950'
+                          : 'bg-[#fafaf9] hover:bg-white border-zinc-200 text-zinc-600'
                       }`}
                     >
-                      <span className="text-xs font-medium text-white">{sw.name.split(' ')[0]}</span>
-                      <span className="text-[10px] text-zinc-400 mt-0.5">{sw.badge}</span>
+                      <span className="text-xs font-medium text-zinc-900 block">{sw.name.split(' ')[0]}</span>
+                      <span className="text-[10px] font-mono text-zinc-600">{sw.badge}</span>
                     </button>
                   );
                 })}
@@ -136,9 +136,9 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
 
             {/* Plate Selector */}
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-1.5">
-                <Sliders className="w-3.5 h-3.5 text-cyan-400" />
-                Plate Resonance
+              <label className="text-xs font-mono uppercase tracking-wider text-zinc-700 flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5 text-zinc-500" />
+                Plate Resonance Density
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {PLATE_OPTIONS.map((pl) => {
@@ -150,14 +150,14 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
                         setSelectedPlate(pl.id as PlateType);
                         soundEngine.playKeyStroke(selectedSwitch, pl.id as PlateType);
                       }}
-                      className={`p-2.5 rounded-lg border text-left transition-all flex flex-col justify-between ${
+                      className={`p-2.5 border text-left transition-colors cursor-pointer ${
                         isSel
-                          ? 'bg-cyan-500/15 border-cyan-500/50 text-white'
-                          : 'bg-zinc-900/60 hover:bg-zinc-900 border-white/5 text-zinc-400'
+                          ? 'bg-white border-zinc-900 ring-1 ring-zinc-900 text-zinc-950'
+                          : 'bg-[#fafaf9] hover:bg-white border-zinc-200 text-zinc-600'
                       }`}
                     >
-                      <span className="text-xs font-medium text-white">{pl.name.split(' ')[0]}</span>
-                      <span className="text-[10px] text-zinc-400 mt-0.5">{pl.id.toUpperCase()}</span>
+                      <span className="text-xs font-medium text-zinc-900 block">{pl.name}</span>
+                      <span className="text-[10px] font-mono text-zinc-600">{pl.badge || 'Neutral'}</span>
                     </button>
                   );
                 })}
@@ -166,55 +166,52 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
 
           </div>
 
-          {/* Active Acoustic Timbre Readout Card */}
-          <div className="p-4 rounded-lg bg-zinc-900/80 border border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-white">
-                  {currentSwitchOpt.name} on {currentPlateOpt.name}
-                </span>
-                <span className="px-2 py-0.5 rounded text-[10px] bg-amber-400/20 text-amber-300 font-mono">
-                  {currentSwitchOpt.badge}
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 mt-1">
-                {currentPlateOpt.acousticNote}
-              </p>
+          {/* Interactive Acoustic Waveform / Calibration Bar */}
+          <div className="p-4 border border-zinc-200 bg-[#fafaf9] space-y-3 blueprint-grid-fine">
+            <div className="flex items-center justify-between text-[10.5px] font-mono text-zinc-600 border-b border-zinc-200 pb-2">
+              <span>ACTIVE SPECIMEN: {currentSwitchOpt.name.toUpperCase()} + {currentPlateOpt.name.toUpperCase()} PLATE</span>
+              <span>SAMPLING: 48 KHZ WAV</span>
             </div>
 
-            {/* Simulated Live Acoustic Waveform Meter */}
-            <div className="flex items-center gap-1 h-8 px-3 py-1 rounded bg-black/60 border border-white/5">
-              {[14, 22, 10, 26, 18, 24, 8, 20, 28, 16, 22, 12, 18, 8].map((baseH, i) => {
-                const isPulsing = recentHits.length > 0;
-                const height = isPulsing ? baseH : 4;
-                return (
-                  <div
-                    key={i}
-                    className="w-1 rounded-full bg-amber-400 transition-all duration-75"
-                    style={{ height: `${height}px`, opacity: isPulsing ? 1 : 0.3 }}
-                  />
-                );
-              })}
+            {/* Timbre Metrics */}
+            <div className="grid grid-cols-3 gap-3 text-center">
+              <div className="p-2 border border-zinc-200 bg-white">
+                <div className="text-[9.5px] font-mono text-zinc-600 uppercase">Resonance Center</div>
+                <div className="text-xs font-mono font-medium text-zinc-900 mt-0.5">
+                  {selectedPlate === 'brass' ? '820 Hz' : selectedPlate === 'aluminum' ? '640 Hz' : selectedPlate === 'fr4' ? '410 Hz' : '220 Hz'}
+                </div>
+              </div>
+              <div className="p-2 border border-zinc-200 bg-white">
+                <div className="text-[9.5px] font-mono text-zinc-600 uppercase">Actuation Force</div>
+                <div className="text-xs font-mono font-medium text-zinc-900 mt-0.5">
+                  {selectedSwitch === 'tactile' ? '58 gf' : selectedSwitch === 'clicky' ? '62 gf' : '50 gf'}
+                </div>
+              </div>
+              <div className="p-2 border border-zinc-200 bg-white">
+                <div className="text-[9.5px] font-mono text-zinc-600 uppercase">Damping Factor</div>
+                <div className="text-xs font-mono font-medium text-zinc-900 mt-0.5">
+                  {selectedPlate === 'polycarbonate' ? '0.88 (Deep)' : selectedPlate === 'fr4' ? '0.74 (Clack)' : '0.45 (Bright)'}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Virtual Typing Stage */}
-          <div className="space-y-2 text-center">
-            <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-mono">
-              Interactive Keystroke Surface (Click or press physical keyboard)
+          {/* Virtual Keyboard Keypad for Clicking */}
+          <div className="space-y-2">
+            <div className="text-[10px] font-mono uppercase tracking-wider text-zinc-600 text-center">
+              Type on your keyboard or click below to audition
             </div>
-            
-            <div className="p-4 bg-black/40 rounded-xl border border-white/5 flex flex-col items-center gap-2 select-none">
-              
-              <div className="flex items-center gap-1.5">
-                {virtualKeysRow1.map(k => (
+
+            <div className="p-4 border border-zinc-200 bg-[#fafaf9] flex flex-col items-center gap-1.5 select-none">
+              <div className="flex gap-1">
+                {virtualKeysRow1.map((k) => (
                   <button
                     key={k}
                     onClick={() => triggerClick(k)}
-                    className={`w-10 h-10 rounded border font-mono text-xs font-semibold flex items-center justify-center transition-all ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 border text-xs font-mono transition-all flex items-center justify-center cursor-pointer ${
                       activeKey === k
-                        ? 'bg-amber-400 text-black border-amber-300 scale-95 shadow-md shadow-amber-400/30'
-                        : 'bg-zinc-800 hover:bg-zinc-700 text-white border-white/10'
+                        ? 'bg-zinc-900 text-white border-zinc-900 scale-95'
+                        : 'bg-white hover:bg-zinc-100 border-zinc-300 text-zinc-800'
                     }`}
                   >
                     {k}
@@ -222,15 +219,15 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
                 ))}
               </div>
 
-              <div className="flex items-center gap-1.5">
-                {virtualKeysRow2.map(k => (
+              <div className="flex gap-1">
+                {virtualKeysRow2.map((k) => (
                   <button
                     key={k}
                     onClick={() => triggerClick(k)}
-                    className={`w-10 h-10 rounded border font-mono text-xs font-semibold flex items-center justify-center transition-all ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 border text-xs font-mono transition-all flex items-center justify-center cursor-pointer ${
                       activeKey === k
-                        ? 'bg-amber-400 text-black border-amber-300 scale-95 shadow-md shadow-amber-400/30'
-                        : 'bg-zinc-800 hover:bg-zinc-700 text-white border-white/10'
+                        ? 'bg-zinc-900 text-white border-zinc-900 scale-95'
+                        : 'bg-white hover:bg-zinc-100 border-zinc-300 text-zinc-800'
                     }`}
                   >
                     {k}
@@ -238,15 +235,15 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
                 ))}
               </div>
 
-              <div className="flex items-center gap-1.5">
-                {virtualKeysRow3.map(k => (
+              <div className="flex gap-1">
+                {virtualKeysRow3.map((k) => (
                   <button
                     key={k}
                     onClick={() => triggerClick(k)}
-                    className={`w-10 h-10 rounded border font-mono text-xs font-semibold flex items-center justify-center transition-all ${
+                    className={`w-9 h-9 sm:w-10 sm:h-10 border text-xs font-mono transition-all flex items-center justify-center cursor-pointer ${
                       activeKey === k
-                        ? 'bg-amber-400 text-black border-amber-300 scale-95 shadow-md shadow-amber-400/30'
-                        : 'bg-zinc-800 hover:bg-zinc-700 text-white border-white/10'
+                        ? 'bg-zinc-900 text-white border-zinc-900 scale-95'
+                        : 'bg-white hover:bg-zinc-100 border-zinc-300 text-zinc-800'
                     }`}
                   >
                     {k}
@@ -254,35 +251,28 @@ export const SoundTestModal: React.FC<SoundTestModalProps> = ({
                 ))}
               </div>
 
+              {/* Spacebar */}
               <div className="pt-1">
                 <button
                   onClick={() => triggerClick('SPACE')}
-                  className={`w-64 h-10 rounded border font-mono text-xs font-semibold flex items-center justify-center transition-all ${
+                  className={`w-48 sm:w-64 h-8 border text-xs font-mono transition-all flex items-center justify-center cursor-pointer ${
                     activeKey === ' ' || activeKey === 'SPACE'
-                      ? 'bg-amber-400 text-black border-amber-300 scale-95 shadow-md shadow-amber-400/30'
-                      : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-white/10'
+                      ? 'bg-zinc-900 text-white border-zinc-900 scale-95'
+                      : 'bg-white hover:bg-zinc-100 border-zinc-300 text-zinc-600'
                   }`}
                 >
-                  SPACEBAR
+                  SPACEBAR ACOUSTIC TEST
                 </button>
               </div>
-
             </div>
           </div>
 
-        </div>
+          {/* Keystroke Activity Log */}
+          <div className="flex items-center justify-between text-[10px] font-mono text-zinc-600 border-t border-zinc-200 pt-3">
+            <span>KEYSTROKES AUDITIONED: {recentHits.length}</span>
+            <span>PRESS ANY PHYSICAL KEY TO TRIGGER TIMBRE</span>
+          </div>
 
-        {/* Footer */}
-        <div className="px-6 py-4 bg-[#090a0d] border-t border-white/10 flex items-center justify-between">
-          <span className="text-xs text-zinc-400">
-            Acoustic recordings synthesized in real-time with Web Audio API.
-          </span>
-          <button
-            onClick={onClose}
-            className="px-5 py-2 rounded bg-white text-zinc-950 font-semibold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-colors"
-          >
-            Apply to Build
-          </button>
         </div>
 
       </div>

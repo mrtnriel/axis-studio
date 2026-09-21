@@ -151,43 +151,43 @@ export const KeyboardScene: React.FC = () => {
         shadows
         style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
       >
-        <color attach="background" args={['#08090d']} />
+        <color attach="background" args={['#fafaf9']} />
 
-        {/* Studio Ambient Base */}
-        <ambientLight intensity={0.75} />
+        {/* Clean Studio Ambient Base */}
+        <ambientLight intensity={1.1} color="#ffffff" />
 
         {/* Main Studio Key Light */}
         <directionalLight
-          position={[7, 12, 9]}
-          intensity={2.4}
+          position={[8, 14, 9]}
+          intensity={2.6}
           castShadow
           shadow-mapSize={[2048, 2048]}
           shadow-bias={-0.0001}
         />
 
-        {/* Cool Rim / Edge Highlight */}
+        {/* Soft Technical Fill Highlight */}
         <directionalLight
-          position={[-9, 7, -7]}
-          intensity={1.2}
-          color="#93c5fd"
+          position={[-9, 8, -7]}
+          intensity={0.9}
+          color="#f4f4f5"
         />
 
-        {/* Warm Fill Light */}
+        {/* Subtle Under-Chassis Uplight */}
         <directionalLight
           position={[0, -5, 7]}
-          intensity={0.45}
-          color="#fde68a"
+          intensity={0.4}
+          color="#ffffff"
         />
 
-        {/* Ground Soft Contact Shadow */}
+        {/* Ground Soft Contact Shadow on White Drafting Stage */}
         <ContactShadows
           position={[0, isExploded ? -3.0 : -0.52, 0]}
-          opacity={0.82}
-          scale={34}
-          blur={2.4}
+          opacity={0.35}
+          scale={36}
+          blur={2.0}
           far={10}
           resolution={1024}
-          color="#000000"
+          color="#18181b"
         />
 
         {/* 3D Keyboard Model */}

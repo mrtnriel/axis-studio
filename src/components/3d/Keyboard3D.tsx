@@ -399,8 +399,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, 0.8, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-amber-400 text-xs font-mono border border-amber-400/30 whitespace-nowrap shadow-xl">
-              1. Double-Shot PBT Keycaps ({config.keycaps.toUpperCase()})
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 01 // DOUBLE-SHOT PBT ({config.keycaps.toUpperCase()})
             </div>
           </Html>
         )}
@@ -437,8 +437,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, 0.5, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-emerald-400 text-xs font-mono border border-emerald-400/30 whitespace-nowrap shadow-xl">
-              2. Hand-Lubed Switches ({config.switchType.toUpperCase()})
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 02 // HAND-LUBED SWITCHES ({config.switchType.toUpperCase()})
             </div>
           </Html>
         )}
@@ -457,8 +457,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, 0.3, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-cyan-400 text-xs font-mono border border-cyan-400/30 whitespace-nowrap shadow-xl">
-              3. Precision Plate ({config.plate.toUpperCase()})
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 03 // STRUCTURAL PLATE ({config.plate.toUpperCase()})
             </div>
           </Html>
         )}
@@ -481,8 +481,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, 0.2, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-purple-400 text-xs font-mono border border-purple-400/30 whitespace-nowrap shadow-xl">
-              4. {config.pcb === 'wireless-tri' ? 'Tri-Mode Wireless PCB' : config.pcb === 'solder-audiophile' ? 'Flex-Cut Audiophile PCB' : 'Hot-Swap RGB PCB'} with Poron Gaskets
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 04 // {config.pcb === 'wireless-tri' ? 'TRI-MODE WIRELESS PCB' : config.pcb === 'solder-audiophile' ? 'FLEX-CUT AUDIOPHILE PCB' : 'HOT-SWAP RGB PCB'} // PORON GASKETS
             </div>
           </Html>
         )}
@@ -514,8 +514,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, 0.2, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-amber-200 text-xs font-mono border border-amber-200/30 whitespace-nowrap shadow-xl">
-              5. CNC Top Case ({config.caseColor.toUpperCase()})
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 05 // CNC TOP CHASSIS ({config.caseColor.toUpperCase()})
             </div>
           </Html>
         )}
@@ -547,8 +547,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, -0.1, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-amber-200 text-xs font-mono border border-amber-200/30 whitespace-nowrap shadow-xl">
-              6. Bottom Acoustic Chamber
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 06 // ACOUSTIC CAVITY CHASSIS
             </div>
           </Html>
         )}
@@ -572,8 +572,8 @@ export const Keyboard3D: React.FC = () => {
 
         {isExploded && (
           <Html position={[0, -0.2, -caseDepth / 2 - 0.4]} center>
-            <div className="px-3 py-1 rounded bg-black/85 backdrop-blur-md text-yellow-300 text-xs font-mono border border-yellow-300/30 whitespace-nowrap shadow-xl">
-              7. Acoustic Ingot Weight ({config.weightBar.toUpperCase()})
+            <div className="px-2.5 py-1 bg-white/95 border border-zinc-300 text-zinc-900 text-[11px] font-mono whitespace-nowrap shadow-sm">
+              + 07 // DENSITY INGOT WEIGHT ({config.weightBar.toUpperCase()})
             </div>
           </Html>
         )}

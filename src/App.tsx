@@ -69,7 +69,7 @@ const MainApp: React.FC = () => {
   };
 
   return (
-    <div className={`bg-[#070709] text-white flex flex-col selection:bg-amber-400 selection:text-black ${currentView === 'customizer' ? 'h-full min-h-0 overflow-hidden' : 'min-h-screen'}`}>
+    <div className={`bg-[#fafaf9] text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white ${currentView === 'customizer' ? 'h-full min-h-0 overflow-hidden' : 'min-h-screen'}`}>
       
       {/* Universal Navigation Header */}
       <Navbar

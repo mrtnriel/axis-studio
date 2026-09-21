@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, Sliders } from 'lucide-react';
+import { Volume2, Sliders, Activity } from 'lucide-react';
 import { soundEngine } from '../audio/soundEngine';
 import { SWITCH_OPTIONS } from '../../data/customizerOptions';
 import type { SwitchType } from '../../types';
@@ -23,87 +23,99 @@ export const AcousticSection: React.FC<AcousticSectionProps> = ({
 
   const stackLayers = [
     {
+      step: '01',
       title: 'Poron Leaf Spring Gaskets',
-      description: 'Sits between case and plate to decouple typing vibration from your desk.'
+      description: 'Sits between case and plate to decouple typing vibration from the desktop.'
     },
     {
+      step: '02',
       title: 'IXPE Ultra-Dense Switch Film',
-      description: 'Directs switch impact frequency forward rather than dispersing into the cavity.'
+      description: 'Directs switch impact frequency forward rather than dispersing into the internal cavity.'
     },
     {
+      step: '03',
       title: 'Precision Acoustic Plates',
-      description: 'Choose solid brass for bright clack or flex polycarbonate for deep thock.'
+      description: 'Choose solid milled brass for bright clack or flex polycarbonate for deep thock.'
     },
     {
+      step: '04',
       title: 'Solid Brass Counter-Weight',
       description: 'High-density ballast eliminates hollow case resonance completely.'
     }
   ];
 
   return (
-    <section className="w-full py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#07070a]">
+    <section className="w-full py-20 px-4 sm:px-6 lg:px-8 border-b border-zinc-200 bg-[#fafaf9] blueprint-grid-fine">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="max-w-2xl">
-          <div className="text-xs font-mono text-amber-400 uppercase tracking-widest">
-            Acoustic Architecture
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-zinc-200">
+          <div className="max-w-2xl">
+            <div className="text-xs font-mono text-zinc-500 uppercase tracking-widest flex items-center gap-2">
+              <Activity className="w-3.5 h-3.5 text-zinc-700" />
+              <span>TEST BENCH // ACOUSTIC TIMBRE ANALYSIS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-950 tracking-tight mt-1">
+              Engineered for Pure Mechanical Timbre
+            </h2>
+            <p className="text-sm text-zinc-600 mt-1 leading-relaxed">
+              Eliminating cavity resonance through internal acoustic dampening and high-density brass ballasts.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1">
-            Engineered for Pure Mechanical Timbre
-          </h2>
-          <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-            Eliminating hollow vibration through internal acoustic dampening and high-density brass ballasts.
-          </p>
+
+          <div className="text-[11px] font-mono text-zinc-500 text-left sm:text-right">
+            <div>CALIBRATION: 2026 LAB SPEC</div>
+            <div>TOLERANCE: ±0.5 dB</div>
+          </div>
         </div>
 
         {/* 2-Column Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left: Switch Sound Audition Matrix */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="p-6 rounded-2xl bg-[#101116] border border-white/5 space-y-5">
+            <div className="p-6 rounded border border-zinc-300 bg-white shadow-sm space-y-5">
               <div>
-                <h3 className="text-base font-semibold text-white">
-                  Direct Timbre Audition
+                <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-zinc-900">
+                  Switch Timbre Matrix
                 </h3>
-                <p className="text-xs text-zinc-400 mt-0.5">
-                  Click any switch profile to test acoustic bottom-out in real-time.
+                <p className="text-xs text-zinc-500 mt-0.5">
+                  Click any switch channel to trigger authentic acoustic bottom-out.
                 </p>
               </div>
 
               {/* 4 Switch Sound Trigger Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {SWITCH_OPTIONS.map((sw) => {
+                {SWITCH_OPTIONS.map((sw, idx) => {
                   const isPlaying = activeAudition === sw.id;
                   return (
                     <button
                       key={sw.id}
                       onClick={() => handleAudition(sw.id as SwitchType)}
-                      className={`p-4 rounded-xl border text-left transition-all active:scale-[0.98] flex flex-col justify-between cursor-pointer ${
+                      className={`p-3.5 rounded border text-left transition-all active:scale-[0.98] flex flex-col justify-between cursor-pointer ${
                         isPlaying
-                          ? 'bg-amber-500/15 border-amber-500/50 shadow-lg shadow-amber-500/10'
-                          : 'bg-zinc-900/70 hover:bg-zinc-900 border-white/5 hover:border-white/15'
+                          ? 'bg-zinc-100 border-zinc-900 shadow-sm'
+                          : 'bg-white hover:bg-zinc-50 border-zinc-200'
                       }`}
                     >
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center gap-2">
                           <div 
-                            className="w-3.5 h-3.5 rounded-full" 
+                            className="w-3.5 h-3.5 rounded-none border border-zinc-400" 
                             style={{ backgroundColor: sw.hex }}
                           />
-                          <span className="text-xs font-bold text-white">
-                            {sw.name.split(' ')[0]}
+                          <span className="text-xs font-mono font-bold text-zinc-900">
+                            CH-0{idx + 1} // {sw.name.split(' ')[0]}
                           </span>
                         </div>
-                        <Volume2 className={`w-3.5 h-3.5 ${isPlaying ? 'text-amber-400' : 'text-zinc-500'}`} />
+                        <Volume2 className={`w-3.5 h-3.5 ${isPlaying ? 'text-zinc-950' : 'text-zinc-400'}`} />
                       </div>
 
-                      <div className="mt-3">
-                        <div className="text-[11px] text-amber-300 font-mono font-medium">
+                      <div className="mt-3 font-mono">
+                        <div className="text-[11px] text-zinc-900 font-semibold">
                           {sw.badge}
                         </div>
-                        <p className="text-[10px] text-zinc-400 mt-0.5 line-clamp-1">
+                        <p className="text-[10px] text-zinc-500 mt-0.5 line-clamp-1">
                           {sw.acousticNote}
                         </p>
                       </div>
@@ -112,48 +124,49 @@ export const AcousticSection: React.FC<AcousticSectionProps> = ({
                 })}
               </div>
 
-              {/* Active Profile Readout */}
-              <div className="p-3.5 rounded-xl bg-black/60 border border-white/5 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono text-zinc-300">
-                  <Volume2 className="w-4 h-4 text-amber-400 shrink-0" />
+              {/* Active Profile Readout & Frequency Meter */}
+              <div className="p-3.5 rounded border border-zinc-200 bg-zinc-50 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono text-zinc-700">
+                  <Volume2 className="w-4 h-4 text-zinc-900 shrink-0" />
                   <span>
-                    Acoustic Profile: <span className="text-amber-400 font-semibold">{activeOpt?.name}</span> &bull; {activeOpt?.acousticNote}
+                    ACTIVE PROFILE: <strong className="text-zinc-950">{activeOpt?.name}</strong> &bull; {activeOpt?.acousticNote}
                   </span>
                 </div>
               </div>
             </div>
 
             {/* One Clear Primary Action CTA */}
-            <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <span className="text-xs text-zinc-300">
-                Ready to assemble this switch configuration?
+            <div className="p-4 rounded border border-zinc-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+              <span className="text-xs text-zinc-600 font-mono">
+                Pair this switch with custom plates in 3D:
               </span>
               <button
                 onClick={() => onLaunchStudio(activeAudition)}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-zinc-950 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-amber-400/20 transition-all active:scale-[0.98] cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded bg-zinc-900 hover:bg-black text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98] cursor-pointer"
               >
                 <Sliders className="w-3.5 h-3.5" />
                 <span>Configure in 3D</span>
+                <span className="text-zinc-400">&rarr;</span>
               </button>
             </div>
           </div>
 
-          {/* Right: Macro Photography & Acoustic Stack Layers */}
+          {/* Right: Technical Macro Photography & Multi-layer Stack */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-950 aspect-[16/10] relative">
-              <img
-                src="/images/switch_artisan_macro.jpg"
-                alt="CNC Milled Solid Brass Keyboard Plate and Lubed Switches"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-[10px] font-mono uppercase text-amber-400 tracking-widest block">
-                  Precision Tolerances &bull; 0.02mm Milled Brass
-                </span>
-                <h4 className="text-sm font-semibold text-white mt-0.5">
-                  High-Density Acoustic Plate & Switches
-                </h4>
+            <div className="rounded border border-zinc-300 bg-white p-2 shadow-sm relative">
+              <div className="aspect-[16/10] overflow-hidden bg-zinc-100 rounded border border-zinc-200 relative">
+                <img
+                  src="/images/switch_artisan_macro.jpg"
+                  alt="CNC Milled Solid Brass Keyboard Plate and Lubed Switches"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-white/90 backdrop-blur-md border border-zinc-200 text-[10px] font-mono text-zinc-800">
+                  SEC A-A &bull; PLATE &amp; SWITCH INTERFACE
+                </div>
+              </div>
+              <div className="p-2 pt-3 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                <span>CNC MILLED SOLID BRASS PLATE</span>
+                <span>TOLERANCE: 0.02 mm</span>
               </div>
             </div>
 
@@ -162,13 +175,13 @@ export const AcousticSection: React.FC<AcousticSectionProps> = ({
               {stackLayers.map((layer, idx) => (
                 <div 
                   key={idx}
-                  className="p-3.5 rounded-xl bg-[#101116] border border-white/5 space-y-1"
+                  className="p-3.5 rounded border border-zinc-200 bg-white space-y-1 shadow-sm"
                 >
-                  <div className="text-xs font-semibold text-white flex items-center gap-1.5">
-                    <span className="text-[10px] font-mono text-amber-400">0{idx + 1}.</span>
-                    {layer.title}
+                  <div className="text-xs font-mono font-bold text-zinc-900 flex items-center gap-1.5">
+                    <span className="text-zinc-400">[{layer.step}]</span>
+                    <span>{layer.title}</span>
                   </div>
-                  <p className="text-[11px] text-zinc-400 leading-relaxed">
+                  <p className="text-[11px] text-zinc-600 leading-relaxed font-mono">
                     {layer.description}
                   </p>
                 </div>
